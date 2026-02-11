@@ -9,7 +9,9 @@ body{
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #ffffff;
+  background: url(bg.png) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 .wrapper{
   width: 420px;
@@ -50,7 +52,7 @@ body{
   top: 30%;
   transform: translate(-50%);
   font-size: 20px;
-
+  
 }
 .wrapper .remember-forgot{
   display: flex;
