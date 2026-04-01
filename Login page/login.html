@@ -8,15 +8,18 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
 </head>
 <body>
+  <div class="home-btn">
+    <a href="../front page/index.html">← Back to Home</a>
+  </div>
   <div class="wrapper">
-    <form action="">
+    <form id="loginForm" action="">
       <h1>Login</h1>
       <div class="input-box">
-        <input type="text" placeholder="Username" required>
+        <input type="text" id="username" placeholder="Username" required>
         <i class='bx bxs-user'></i>
       </div>
       <div class="input-box">
-        <input type="password" placeholder="Password" required>
+        <input type="password" id="password" placeholder="Password" required>
         <i class='bx bxs-lock-alt' ></i>
       </div>
       <div class="remember-forgot">
@@ -25,9 +28,38 @@
       </div>
       <button type="submit" class="btn">Login</button>
       <div class="register-link">
-        <p>Don't have an account? <a href="#">Register</a></p>
+        <p>Don't have an account? <a href="../Signup page/Signup.html">Register</a></p>
       </div>
     </form>
   </div>
+
+  <style>
+    .home-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+    }
+
+    .home-btn a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #0343b3;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      font-weight: bold;
+    }
+
+    .home-btn a:hover {
+      background: #022a5c;
+      transform: translateX(-5px);
+    }
+
+    .wrapper .input-box {
+      transition: all 0.3s ease;
+    }
+  </style>
 </body>
 </html>
