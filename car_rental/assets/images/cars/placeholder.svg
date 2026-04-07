@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="260" viewBox="0 0 400 260">
+  <rect width="400" height="260" fill="#EDE9FE" rx="12"/>
+  <rect x="60" y="80" width="280" height="140" rx="20" fill="#DDD6FE"/>
+  <!-- Car body -->
+  <rect x="80" y="110" width="240" height="70" rx="14" fill="#A78BFA"/>
+  <rect x="110" y="90" width="170" height="55" rx="10" fill="#C4B5FD"/>
+  <!-- Windows -->
+  <rect x="118" y="97" width="65" height="38" rx="6" fill="#E0D7FF" opacity="0.9"/>
+  <rect x="192" y="97" width="70" height="38" rx="6" fill="#E0D7FF" opacity="0.9"/>
+  <!-- Wheels -->
+  <circle cx="128" cy="182" r="24" fill="#6C63FF"/>
+  <circle cx="128" cy="182" r="12" fill="#EDE9FE"/>
+  <circle cx="272" cy="182" r="24" fill="#6C63FF"/>
+  <circle cx="272" cy="182" r="12" fill="#EDE9FE"/>
+  <!-- Text -->
+  <text x="200" y="230" font-family="Arial, sans-serif" font-size="13" font-weight="600" text-anchor="middle" fill="#7C3AED">No Image Available</text>
+</svg>

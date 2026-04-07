@@ -45,7 +45,7 @@ if (!$result) {
     die("Query error: " . $conn->error);
 }
 
-// Handle delete action
+// Handle delete action via GET (kept for backwards compatibility)
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     $delete_id = (int)$_GET['id'];
     
@@ -368,15 +368,13 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
             <?php unset($_SESSION['message'], $_SESSION['msg_type']); ?>
         <?php endif; ?>
 
-        <!-- Search Box -->
+        <!-- Search Box with AJAX -->
         <div class="search-box">
-            <form method="GET" action="dashboard.php">
-                <input type="text" name="search" placeholder="Search by name or email..." value="<?php echo htmlspecialchars($search); ?>">
-                <button type="submit"><i class="fas fa-search"></i> Search</button>
-                <?php if ($search): ?>
-                    <a href="dashboard.php" class="btn btn-secondary">Clear</a>
-                <?php endif; ?>
-            </form>
+            <div style="position: relative;">
+                <input type="text" id="searchInput" placeholder="Search by name or email..." class="form-control" style="width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 5px;">
+                <div id="searchResults" style="position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; border-radius: 0 0 5px 5px; max-height: 300px; overflow-y: auto; z-index: 1000; display: none;"></div>
+            </div>
+            <small class="text-muted d-block mt-2">Type to search users in real-time</small>
         </div>
 
         <!-- Users Table -->
@@ -395,7 +393,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
                         </thead>
                         <tbody>
                             <?php while ($row = $result->fetch_assoc()): ?>
-                                <tr>
+                                <tr data-row-id="<?php echo $row['id']; ?>">
                                     <td>
                                         <div class="user-info">
                                             <?php if ($row['profile_image'] && file_exists($row['profile_image'])): ?>
@@ -418,10 +416,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
                                             <a href="edit.php?id=<?php echo $row['id']; ?>" class="btn-edit">
                                                 <i class="fas fa-edit"></i> Edit
                                             </a>
-                                            <a href="dashboard.php?action=delete&id=<?php echo $row['id']; ?>" class="btn-delete" 
-                                               onclick="return confirm('Are you sure you want to delete this user?');">
+                                            <button class="btn-delete" onclick="deleteUserAjax(<?php echo $row['id']; ?>)" data-user-id="<?php echo $row['id']; ?>">
                                                 <i class="fas fa-trash"></i> Delete
-                                            </a>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -476,6 +473,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
     <script>
         // Close alerts automatically
         setTimeout(function() {
@@ -485,6 +483,27 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']))
                 bsAlert.close();
             });
         }, 5000);
+
+        // Show search results on input
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            const query = this.value.trim();
+            const resultsDiv = document.getElementById('searchResults');
+            if (query.length > 0) {
+                resultsDiv.style.display = 'block';
+                searchUsersAjax(query);
+            } else {
+                resultsDiv.style.display = 'none';
+            }
+        });
+
+        // Hide search results when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>

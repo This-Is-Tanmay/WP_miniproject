@@ -254,6 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </label>
                 <input type="email" class="form-control" id="email" name="email" 
                        placeholder="Enter email address" required>
+                <div id="emailFeedback"></div>
             </div>
 
             <div class="form-group">
@@ -295,6 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
     <script>
         // File input update
         document.getElementById('profile_image').addEventListener('change', function() {
@@ -302,28 +304,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             document.getElementById('file-name').innerHTML = fileName;
         });
 
-        // Form validation
-        document.getElementById('addUserForm').addEventListener('submit', function(e) {
-            const fullName = document.getElementById('full_name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const age = document.getElementById('age').value;
-            const password = document.getElementById('password').value;
+        // Real-time email validation
+        document.getElementById('email').addEventListener('blur', function() {
+            checkEmailExists(this);
+        });
 
+        // Enhanced form validation (using AJAX script validation)
+        document.getElementById('addUserForm').addEventListener('submit', function(e) {
+            // Use AJAX validation function
+            if (!validateForm('addUserForm')) {
+                e.preventDefault();
+                return false;
+            }
+
+            const fullName = document.getElementById('full_name').value.trim();
             if (fullName.length < 3) {
                 e.preventDefault();
-                alert('Full name must be at least 3 characters!');
-                return false;
-            }
-
-            if (password.length < 6) {
-                e.preventDefault();
-                alert('Password must be at least 6 characters!');
-                return false;
-            }
-
-            if (age < 18 || age > 100) {
-                e.preventDefault();
-                alert('Age must be between 18 and 100!');
+                showAlert('Full name must be at least 3 characters!', 'danger');
                 return false;
             }
         });
