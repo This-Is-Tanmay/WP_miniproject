@@ -6,7 +6,7 @@
  * Requires: admin
  */
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=UTF-8');
 
 require_once '../includes/db.php';
 require_once '../includes/auth.php';
@@ -155,7 +155,7 @@ try {
             );
             $bookings = $stmt->fetchAll();
             foreach ($bookings as &$b) {
-                $b['total_price_fmt'] = '₹' . number_format($b['total_price'], 0);
+                $b['total_price_fmt'] = 'Rs. ' . number_format($b['total_price'], 0);
                 $b['start_fmt']       = date('d M Y', strtotime($b['start_date']));
                 $b['end_fmt']         = date('d M Y', strtotime($b['end_date']));
                 $b['created_fmt']     = date('d M Y', strtotime($b['created_at']));
@@ -172,7 +172,7 @@ try {
                 'total_users'    => $pdo->query("SELECT COUNT(*) FROM users WHERE role='user'")->fetchColumn(),
                 'total_revenue'  => $pdo->query("SELECT COALESCE(SUM(total_price),0) FROM bookings WHERE status='confirmed'")->fetchColumn(),
             ];
-            $stats['total_revenue_fmt'] = '₹' . number_format($stats['total_revenue'], 0);
+            $stats['total_revenue_fmt'] = 'Rs. ' . number_format($stats['total_revenue'], 0);
             echo json_encode(['success' => true, 'data' => $stats]);
             break;
 

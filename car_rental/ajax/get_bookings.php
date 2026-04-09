@@ -5,7 +5,7 @@
  * Returns: JSON array of bookings with car details
  */
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=UTF-8');
 
 require_once '../includes/db.php';
 require_once '../includes/auth.php';
@@ -28,7 +28,7 @@ try {
 
     foreach ($bookings as &$booking) {
         $booking['car_image_url']    = '/car_rental/assets/images/cars/' . $booking['car_image'];
-        $booking['total_price_fmt']  = '₹' . number_format($booking['total_price'], 0);
+        $booking['total_price_fmt']  = 'Rs. ' . number_format($booking['total_price'], 0);
         $booking['start_date_fmt']   = date('d M Y', strtotime($booking['start_date']));
         $booking['end_date_fmt']     = date('d M Y', strtotime($booking['end_date']));
         $booking['created_at_fmt']   = date('d M Y, h:i A', strtotime($booking['created_at']));

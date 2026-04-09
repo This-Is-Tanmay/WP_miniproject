@@ -17,6 +17,8 @@ if (isLoggedIn()) {
   <link rel="stylesheet" href="/car_rental/assets/css/style.css">
   <link rel="stylesheet" href="/car_rental/assets/css/pages/home.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
 </head>
 <body>
@@ -98,7 +100,7 @@ if (isLoggedIn()) {
         <div class="floating-card card-price">
           <span class="fc-icon">💰</span>
           <div>
-            <div class="fc-title">From ₹900/day</div>
+            <div class="fc-title">From Rs. 900/day</div>
             <div class="fc-sub">No hidden charges</div>
           </div>
         </div>
@@ -180,7 +182,7 @@ if (isLoggedIn()) {
       <div class="pricing-card">
         <div class="pricing-icon">🏙️</div>
         <h3>City Drive</h3>
-        <div class="price-range">₹900 – ₹1,500<span>/day</span></div>
+        <div class="price-range">Rs. 900 – 1,500<span>/day</span></div>
         <p>Hatchbacks & Sedans</p>
         <ul class="pricing-features">
           <li>✅ 100km free daily</li>
@@ -194,7 +196,7 @@ if (isLoggedIn()) {
         <div class="popular-badge">Most Popular</div>
         <div class="pricing-icon">🚙</div>
         <h3>Family SUV</h3>
-        <div class="price-range">₹2,000 – ₹2,500<span>/day</span></div>
+        <div class="price-range">Rs. 2,000 – 2,500<span>/day</span></div>
         <p>SUVs & Vans</p>
         <ul class="pricing-features">
           <li>✅ 200km free daily</li>
@@ -207,7 +209,7 @@ if (isLoggedIn()) {
       <div class="pricing-card">
         <div class="pricing-icon">👑</div>
         <h3>Luxury Class</h3>
-        <div class="price-range">₹5,000 – ₹8,000<span>/day</span></div>
+        <div class="price-range">Rs. 5,000 – 8,000<span>/day</span></div>
         <p>Luxury & Convertibles</p>
         <ul class="pricing-features">
           <li>✅ Unlimited km</li>

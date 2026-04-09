@@ -1,4 +1,4 @@
-﻿/**
+/**
  * main.js â€” Global JavaScript Utilities
  * - AJAX helper
  * - Toast notifications
@@ -148,7 +148,7 @@ function buildCarCard(car, showBookBtn = false) {
         ${car.description ? `<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">${car.description}</p>` : ''}
         <div class="car-card-footer">
           <div>
-            <div class="car-price">${car.price_formatted || 'â‚¹' + Number(car.price_per_day).toLocaleString('en-IN')}</div>
+            <div class="car-price">${car.price_formatted || 'Rs. ' + Number(car.price_per_day).toLocaleString('en-IN')}</div>
             <div class="car-price-label">per day</div>
           </div>
           ${showBookBtn && available

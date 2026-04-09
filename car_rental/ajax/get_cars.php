@@ -5,7 +5,7 @@
  * Returns: JSON array of cars
  */
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=UTF-8');
 
 require_once '../includes/db.php';
 
@@ -35,7 +35,7 @@ try {
     foreach ($cars as &$car) {
         $imgPath = '/car_rental/assets/images/cars/' . $car['image'];
         $car['image_url'] = $imgPath;
-        $car['price_formatted'] = '₹' . number_format($car['price_per_day'], 0) . '/day';
+        $car['price_formatted'] = 'Rs. ' . number_format($car['price_per_day'], 0) . '/day';
     }
 
     echo json_encode(['success' => true, 'data' => $cars, 'total' => count($cars)]);

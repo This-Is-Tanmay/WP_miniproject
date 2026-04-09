@@ -172,7 +172,7 @@
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 24px;
 }
 .feature-card {
@@ -236,8 +236,14 @@
 
 .cars-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+@media (min-width: 1200px) {
+  .cars-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 .cars-loading {
   grid-column: 1 / -1;
@@ -442,7 +448,24 @@
 /* ---- Navbar scroll effect ---- */
 body { padding-top: 0; }
 
+@media (min-width: 1440px) {
+  .features-card:nth-child(2) { grid-column: span 2; }
+  .features-card:nth-child(3) { grid-row: span 2; }
+}
+
 /* ---- Responsive ---- */
+/* ---- Card asymmetry (non-AI look) ---- */
+.car-card:nth-child(odd) {
+  transform: rotate(-0.5deg);
+}
+.car-card:nth-child(even) {
+  transform: rotate(0.5deg);
+}
+.car-card:nth-child(odd):hover,
+.car-card:nth-child(even):hover {
+  transform: translateY(-8px) rotate(0deg);
+}
+
 @media (max-width: 1024px) {
   .features-grid  { grid-template-columns: repeat(2, 1fr); }
   .cars-grid      { grid-template-columns: repeat(2, 1fr); }

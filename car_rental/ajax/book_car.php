@@ -6,7 +6,7 @@
  * Returns: JSON
  */
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=UTF-8');
 
 require_once '../includes/db.php';
 require_once '../includes/auth.php';
@@ -92,7 +92,7 @@ try {
         'success'     => true,
         'message'     => "Booking confirmed! {$car['brand']} {$car['name']} booked for {$total_days} day(s).",
         'booking_id'  => $booking_id,
-        'total_price' => '₹' . number_format($total_price, 0),
+        'total_price' => 'Rs. ' . number_format($total_price, 0),
         'total_days'  => $total_days
     ]);
 
