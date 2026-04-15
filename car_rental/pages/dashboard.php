@@ -99,6 +99,9 @@ $userRole  = $_SESSION['user_role'];
       </div>
     </div>
   </div>
+  <footer style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem;">
+    <p>Made by: ITA443, ITA449, ITA459, ITA460</p>
+  </footer>
 </div>
 
 <!-- ===== BOOKING MODAL ===== -->
