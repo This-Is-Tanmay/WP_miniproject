@@ -8,7 +8,7 @@
   background: linear-gradient(180deg, #020617 0%, #0f172a 100%);
   display: flex;
   align-items: stretch;
-  overflow: hidden;
+  overflow-y: auto;
   position: relative;
 }
 
@@ -98,10 +98,11 @@
 .auth-form-panel {
   background: #ffffff;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 40px;
   overflow-y: auto;
+  min-height: 100vh;
 }
 .auth-form-box { width: 100%; max-width: 420px; }
 .auth-form-header { margin-bottom: 32px; }
@@ -194,6 +195,13 @@
 @media (max-width: 768px) {
   .auth-wrapper    { grid-template-columns: 1fr; }
   .auth-visual     { display: none; }
-  .auth-form-panel { padding: 24px 20px; min-height: 100vh; }
+  .auth-form-panel { padding: 24px 20px; min-height: 100vh; align-items: flex-start; }
   .auth-form-box   { max-width: 100%; }
+}
+
+/* Ensure form box is vertically centered with padding when there's enough space */
+@media (min-height: 700px) {
+  .auth-form-panel {
+    align-items: center;
+  }
 }

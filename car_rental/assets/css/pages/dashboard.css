@@ -173,10 +173,68 @@
 }
 
 /* ====== DASHBOARD CARS GRID ====== */
-.dash-cars { grid-template-columns: repeat(3, 1fr); }
+.dash-cars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
 
-.filter-tabs.mini { justify-content: flex-start; margin-bottom: 0; }
-.filter-tabs.mini .filter-btn { padding: 7px 16px; font-size: 0.8rem; }
+/* ---- Dashboard Filter Tabs ---- */
+.filter-tabs.mini {
+  justify-content: flex-start;
+  margin-bottom: 0;
+  background: rgba(15,23,42,0.7);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 9999px;
+  padding: 5px 8px;
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.filter-tabs.mini .filter-btn {
+  padding: 7px 18px;
+  font-size: 0.8rem;
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.filter-tabs.mini .filter-btn:hover {
+  background: rgba(59,130,246,0.12);
+  color: #60a5fa;
+  border: none;
+}
+.filter-tabs.mini .filter-btn.active {
+  background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 2px 12px rgba(59,130,246,0.4);
+}
+
+/* ---- Dashboard Car Card overrides ---- */
+.dash-cars .car-card {
+  border: 1px solid rgba(255,255,255,0.07);
+  background: #1e293b;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dash-cars .car-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(59,130,246,0.35);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.2);
+}
+/* Disable card asymmetry tilt inside dashboard */
+.dash-cars .car-card:nth-child(odd),
+.dash-cars .car-card:nth-child(even) { transform: none; }
+.dash-cars .car-card:nth-child(odd):hover,
+.dash-cars .car-card:nth-child(even):hover { transform: translateY(-6px); }
 
 /* ====== BOOKINGS TABLE ====== */
 .bookings-table-wrap {
@@ -353,7 +411,7 @@
   .stats-grid         { grid-template-columns: repeat(2, 1fr); }
   .section-head       { flex-direction: column; }
   .dash-logout        { display: none; }
-  .filter-tabs.mini   { flex-wrap: wrap; }
+  .filter-tabs.mini   { flex-wrap: wrap; border-radius: 16px; padding: 6px; }
   .form-grid-2        { grid-template-columns: 1fr; }
   .booking-dates      { grid-template-columns: 1fr; }
 }

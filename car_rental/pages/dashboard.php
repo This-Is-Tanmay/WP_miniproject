@@ -12,6 +12,7 @@ $userRole  = $_SESSION['user_role'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — DriveEase Car Rental</title>
   <link rel="stylesheet" href="/car_rental/assets/css/style.css">
+  <link rel="stylesheet" href="/car_rental/assets/css/pages/home.css">
   <link rel="stylesheet" href="/car_rental/assets/css/pages/dashboard.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
 </head>
