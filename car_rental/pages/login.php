@@ -76,7 +76,7 @@ if (isLoggedIn()) {
             <label class="checkbox-label">
               <input type="checkbox" id="rememberMe"> Remember me
             </label>
-            <a href="#" class="forgot-link">Forgot password?</a>
+            <a href="forgot_password.php">Forgot password?</a>
           </div>
 
           <button type="submit" class="btn btn-primary btn-full" id="loginBtn">

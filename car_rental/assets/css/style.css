@@ -44,6 +44,22 @@
   --navbar-height: 70px;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Make images responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* ---- Reset & Base ---- */
 *, *::before, *::after {
   margin: 0;
@@ -606,4 +622,116 @@ p { color: #e2e8f0; }
   .footer-grid { grid-template-columns: 1fr; }
   .container   { padding: 0 16px; }
   .btn-lg      { padding: 14px 28px; font-size: 1rem; }
+}
+
+/* ===== EXTRA MOBILE FIXES (ADD THIS AT END) ===== */
+
+@media (max-width: 768px) {
+
+  /* Container spacing */
+  .container {
+    width: 95%;
+  }
+
+  /* Section spacing */
+  .section {
+    padding: 50px 0;
+  }
+
+  /* Headings smaller */
+  h1 {
+    font-size: 26px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  /* Cards full width */
+  .card {
+    width: 100%;
+  }
+
+  .card-body {
+    padding: 18px;
+  }
+
+  /* Buttons full width */
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Forms fix */
+  .form-control {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Navbar fix */
+  .navbar .container {
+    flex-wrap: wrap;
+  }
+
+  /* Footer fix */
+  .footer {
+    text-align: center;
+  }
+
+}
+
+/* ===== SMALL MOBILE (EXTRA) ===== */
+
+@media (max-width: 480px) {
+
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+}
+
+/* ===== TABLET VIEW (iPad FIX) ===== */
+
+@media (max-width: 1024px) {
+
+  /* Container wider */
+  .container {
+    width: 95%;
+  }
+
+  /* Navbar adjust */
+  .nav-links {
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  /* Hero section spacing */
+  .section {
+    padding: 60px 0;
+  }
+
+  /* Buttons slightly smaller */
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  /* Cards 2 per row */
+  .card {
+    flex: 1 1 45%;
+  }
+
 }
