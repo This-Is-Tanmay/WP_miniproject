@@ -7,19 +7,20 @@ document.addEventListener('DOMContentLoaded', () => {
   loadCars('All');
   initFilters();
 
-  // Hero car auto-cycle
-  const heroCar = document.getElementById('heroCar');
-  const imgs = ['car_luxury.png','car_suv.png','car_sedan.png','car_convertible.png'];
-  let idx = 0;
-  if (heroCar) {
-    setInterval(() => {
-      heroCar.style.opacity = '0';
-      setTimeout(() => {
-        idx = (idx + 1) % imgs.length;
-        heroCar.src = `/car_rental/assets/images/cars/${imgs[idx]}`;
-        heroCar.style.opacity = '1';
-      }, 500);
-    }, 3500);
+  // Generate ambient particles for hero
+  const particlesContainer = document.getElementById('heroParticles');
+  if (particlesContainer) {
+    for (let i = 0; i < 25; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'hero-particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDuration = (6 + Math.random() * 10) + 's';
+      particle.style.animationDelay = (Math.random() * 8) + 's';
+      particle.style.width = (2 + Math.random() * 3) + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.opacity = 0.2 + Math.random() * 0.5;
+      particlesContainer.appendChild(particle);
+    }
   }
 });
 

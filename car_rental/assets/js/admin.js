@@ -1,5 +1,5 @@
-﻿/**
- * admin.js â€” Admin Panel Logic
+/**
+ * admin.js - Admin Panel Logic
  */
 'use strict';
 
@@ -43,11 +43,11 @@ const AdminApp = {
       if (!data.success) return;
       const s = data.data;
       document.getElementById('statsGrid').innerHTML = `
-        <div class="stat-card"><div class="stat-card-icon">ðŸš—</div><div class="stat-card-value">${s.total_cars}</div><div class="stat-card-label">Total Cars</div></div>
-        <div class="stat-card"><div class="stat-card-icon">âœ…</div><div class="stat-card-value">${s.available_cars}</div><div class="stat-card-label">Available</div></div>
-        <div class="stat-card"><div class="stat-card-icon">ðŸ“‹</div><div class="stat-card-value">${s.total_bookings}</div><div class="stat-card-label">Bookings</div></div>
-        <div class="stat-card"><div class="stat-card-icon">ðŸ‘¥</div><div class="stat-card-value">${s.total_users}</div><div class="stat-card-label">Users</div></div>
-        <div class="stat-card"><div class="stat-card-icon">ðŸ’°</div><div class="stat-card-value" style="font-size:1.1rem">${s.total_revenue_fmt}</div><div class="stat-card-label">Revenue</div></div>`;
+        <div class="stat-card"><div class="stat-card-icon">\u{1F697}</div><div class="stat-card-value">${s.total_cars}</div><div class="stat-card-label">Total Cars</div></div>
+        <div class="stat-card"><div class="stat-card-icon">\u{2705}</div><div class="stat-card-value">${s.available_cars}</div><div class="stat-card-label">Available</div></div>
+        <div class="stat-card"><div class="stat-card-icon">\u{1F4CB}</div><div class="stat-card-value">${s.total_bookings}</div><div class="stat-card-label">Bookings</div></div>
+        <div class="stat-card"><div class="stat-card-icon">\u{1F465}</div><div class="stat-card-value">${s.total_users}</div><div class="stat-card-label">Users</div></div>
+        <div class="stat-card"><div class="stat-card-icon">\u{1F4B0}</div><div class="stat-card-value" style="font-size:1.1rem">${s.total_revenue_fmt}</div><div class="stat-card-label">Revenue</div></div>`;
     });
   },
 
@@ -63,11 +63,11 @@ const AdminApp = {
           <tbody>${recent.map(b => `<tr>
             <td><strong>${b.user_name}</strong><br><small style="color:var(--text-muted)">${b.user_email}</small></td>
             <td>${b.car_brand} ${b.car_name}</td>
-            <td>${b.start_fmt} â†’ ${b.end_fmt}</td>
+            <td>${b.start_fmt} \u{2192} ${b.end_fmt}</td>
             <td><strong style="color:var(--primary)">${b.total_price_fmt}</strong></td>
             <td><span class="badge badge-${sc[b.status]||'muted'}">${b.status}</span></td>
           </tr>`).join('')}</tbody></table>
-        </div>` : `<div class="empty-state"><div class="empty-icon">ðŸ“‹</div><p>No bookings yet.</p></div>`;
+        </div>` : `<div class="empty-state"><div class="empty-icon">\u{1F4CB}</div><p>No bookings yet.</p></div>`;
     });
   },
 
@@ -77,7 +77,7 @@ const AdminApp = {
     el.innerHTML = '<div class="cars-loading"><div class="spinner spinner-dark"></div></div>';
     Ajax.get('/car_rental/ajax/admin_cars.php?action=list', data => {
       if (!data.success || !data.data.length) {
-        el.innerHTML = `<div class="empty-state"><div class="empty-icon">ðŸš—</div><p>No cars found. Add one!</p></div>`;
+        el.innerHTML = `<div class="empty-state"><div class="empty-icon">\u{1F697}</div><p>No cars found. Add one!</p></div>`;
         return;
       }
       el.innerHTML = `
@@ -87,17 +87,17 @@ const AdminApp = {
                onerror="this.src='/car_rental/assets/images/cars/placeholder.svg'"></td>
           <td><strong>${c.brand} ${c.name}</strong></td>
           <td><span class="badge badge-primary">${c.type}</span></td>
-          <td>ðŸ‘¥ ${c.seats}</td>
-          <td><strong style="color:var(--primary)">â‚¹${Number(c.price_per_day).toLocaleString('en-IN')}</strong></td>
+          <td>\u{1F465} ${c.seats}</td>
+          <td><strong style="color:var(--primary)">\u{20B9}${Number(c.price_per_day).toLocaleString('en-IN')}</strong></td>
           <td>${c.fuel_type}</td>
           <td>
             <span class="badge badge-${c.available ? 'success' : 'danger'}" style="cursor:pointer" onclick="AdminApp.toggleAvailability(${c.id}, this)">
-              ${c.available ? 'âœ… Available' : 'âŒ Unavailable'}
+              ${c.available ? '\u{2705} Available' : '\u{274C} Unavailable'}
             </span>
           </td>
           <td><div class="action-btns">
-            <button class="btn btn-success btn-sm" onclick="AdminApp.openEditModal(${c.id})">âœï¸ Edit</button>
-            <button class="btn btn-danger  btn-sm" onclick="AdminApp.openDeleteConfirm(${c.id})">ðŸ—‘ï¸ Del</button>
+            <button class="btn btn-success btn-sm" onclick="AdminApp.openEditModal(${c.id})">\u{270F}\u{FE0F} Edit</button>
+            <button class="btn btn-danger  btn-sm" onclick="AdminApp.openDeleteConfirm(${c.id})">\u{1F5D1}\u{FE0F} Del</button>
           </div></td>
         </tr>`).join('')}</tbody></table>`;
     });
@@ -109,7 +109,7 @@ const AdminApp = {
     el.innerHTML = '<div class="cars-loading"><div class="spinner spinner-dark"></div></div>';
     Ajax.get('/car_rental/ajax/admin_cars.php?action=all_bookings', data => {
       if (!data.success || !data.data.length) {
-        el.innerHTML = `<div class="empty-state"><div class="empty-icon">ðŸ“‹</div><p>No bookings yet.</p></div>`;
+        el.innerHTML = `<div class="empty-state"><div class="empty-icon">\u{1F4CB}</div><p>No bookings yet.</p></div>`;
         return;
       }
       const sc = { confirmed:'success', pending:'warning', cancelled:'danger', completed:'primary' };
@@ -119,7 +119,7 @@ const AdminApp = {
           <td>#${b.id}</td>
           <td><strong>${b.user_name}</strong><br><small style="color:var(--text-muted)">${b.user_email}</small></td>
           <td>${b.car_brand} ${b.car_name} <small class="badge badge-primary">${b.car_type}</small></td>
-          <td>${b.start_fmt} â†’ ${b.end_fmt}</td>
+          <td>${b.start_fmt} \u{2192} ${b.end_fmt}</td>
           <td>${b.total_days} day(s)</td>
           <td><strong style="color:var(--primary)">${b.total_price_fmt}</strong></td>
           <td><span class="badge badge-${sc[b.status]||'muted'}">${b.status}</span></td>
@@ -137,7 +137,7 @@ const AdminApp = {
     fetch('/car_rental/ajax/admin_cars.php?action=stats', { headers: {'X-Requested-With':'XMLHttpRequest'} });
     const el = document.getElementById('adminUsersTable');
     el.innerHTML = '<div class="cars-loading"><div class="spinner spinner-dark"></div></div>';
-    // We'll use a separate endpoint concept â€” for now query via admin
+    // We'll use a separate endpoint concept - for now query via admin
     fetch('/car_rental/ajax/admin_cars.php?action=all_bookings', { headers: {'X-Requested-With':'XMLHttpRequest'} })
     .then(r => r.json())
     .then(data => {
@@ -151,7 +151,7 @@ const AdminApp = {
       });
       const users = Object.values(userMap);
       if (!users.length) {
-        el.innerHTML = `<div class="empty-state"><div class="empty-icon">ðŸ‘¥</div><p>No users with bookings yet.</p></div>`;
+        el.innerHTML = `<div class="empty-state"><div class="empty-icon">\u{1F465}</div><p>No users with bookings yet.</p></div>`;
         return;
       }
       el.innerHTML = `
@@ -172,7 +172,7 @@ const AdminApp = {
       onSuccess: data => {
         if (data.success) {
           el.className = `badge badge-${data.available ? 'success' : 'danger'}`;
-          el.innerHTML = data.available ? 'âœ… Available' : 'âŒ Unavailable';
+          el.innerHTML = data.available ? '\u{2705} Available' : '\u{274C} Unavailable';
           Toast.success(data.message);
         } else Toast.error(data.message);
       }
@@ -200,7 +200,7 @@ const AdminApp = {
   },
 
   openAddModal() {
-    document.getElementById('carModalTitle').textContent = 'ðŸš— Add New Car';
+    document.getElementById('carModalTitle').textContent = '\u{1F697} Add New Car';
     document.getElementById('carForm').reset();
     document.getElementById('carId').value = '';
     document.getElementById('carAvailable').value = '1';
@@ -212,7 +212,7 @@ const AdminApp = {
     Ajax.get(`/car_rental/ajax/admin_cars.php?action=list`, data => {
       const car = (data.data || []).find(c => c.id == id);
       if (!car) { Toast.error('Car not found.'); return; }
-      document.getElementById('carModalTitle').textContent = 'âœï¸ Edit Car';
+      document.getElementById('carModalTitle').textContent = '\u{270F}\u{FE0F} Edit Car';
       document.getElementById('carId').value           = car.id;
       document.getElementById('carName').value         = car.name;
       document.getElementById('carBrand').value        = car.brand;
@@ -300,4 +300,3 @@ const AdminApp = {
 };
 
 document.addEventListener('DOMContentLoaded', () => AdminApp.init());
-

@@ -299,7 +299,7 @@ p { color: var(--text-body); }
   margin-bottom: 7px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--text-heading);
+  color: #374151;
 }
 .form-control {
   width: 100%;
@@ -308,7 +308,7 @@ p { color: var(--text-body); }
   border-radius: var(--radius-md);
   font-size: 0.95rem;
   font-family: 'Outfit', sans-serif;
-  color: var(--text-heading);
+  color: #1e293b;
   background: white;
   transition: var(--transition);
   outline: none;
@@ -510,7 +510,7 @@ p { color: var(--text-body); }
   align-items: flex-start;
   margin-bottom: 24px;
 }
-.modal-title { font-size: 1.3rem; font-weight: 700; color: var(--text-heading); }
+.modal-title { font-size: 1.3rem; font-weight: 700; color: #1e293b; }
 .modal-close {
   background: var(--bg-2);
   border: none;
@@ -530,7 +530,7 @@ p { color: var(--text-body); }
 
 /* ---- Footer ---- */
 .footer {
-  background: var(--text-heading);
+  background: var(--bg-2);
   color: rgba(255,255,255,0.75);
   padding: 60px 0 30px;
   margin-top: 80px;

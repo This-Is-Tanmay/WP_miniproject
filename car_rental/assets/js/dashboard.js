@@ -1,5 +1,5 @@
-﻿/**
- * dashboard.js â€” User Dashboard Logic
+/**
+ * dashboard.js - User Dashboard Logic
  */
 'use strict';
 
@@ -48,7 +48,7 @@ const DashApp = {
         this.attachBookBtns();
       } else {
         grid.innerHTML = `<div class="cars-loading" style="grid-column:1/-1">
-          <div style="font-size:2.5rem">ðŸš—</div><h4>No cars available</h4>
+          <div style="font-size:2.5rem">\u{1F697}</div><h4>No cars available</h4>
           <p>No cars found in this category. Try another filter.</p></div>`;
       }
     });
@@ -72,7 +72,7 @@ const DashApp = {
       if (!data.success) { container.innerHTML = `<div class="cars-loading"><p>Failed to load bookings.</p></div>`; return; }
       if (!data.data.length) {
         container.innerHTML = `<div class="empty-state">
-          <div class="empty-icon">ðŸ“‹</div>
+          <div class="empty-icon">\u{1F4CB}</div>
           <h4>No bookings yet</h4>
           <p>You haven't booked any cars yet. Browse our fleet and book your first ride!</p>
           <button class="btn btn-primary" style="margin-top:16px" onclick="DashApp.switchSection('browse')">Browse Cars</button>
@@ -191,8 +191,8 @@ const DashApp = {
     if (days < 1) return;
     const total = days * this.selectedCar.price;
     document.getElementById('bsDays').textContent    = `${days} day(s)`;
-    document.getElementById('bsPriceDay').textContent = `â‚¹${Number(this.selectedCar.price).toLocaleString('en-IN')}`;
-    document.getElementById('bsTotal').textContent   = `â‚¹${total.toLocaleString('en-IN')}`;
+    document.getElementById('bsPriceDay').textContent = `\u{20B9}${Number(this.selectedCar.price).toLocaleString('en-IN')}`;
+    document.getElementById('bsTotal').textContent   = `\u{20B9}${total.toLocaleString('en-IN')}`;
     summary.style.display = 'block';
     document.getElementById('endDate').min = new Date(new Date(startDate).getTime() + 86400000).toISOString().split('T')[0];
   },
@@ -212,7 +212,7 @@ const DashApp = {
   openBookingModal(carId, carName, carPrice, carImage) {
     this.selectedCar = { id: carId, name: carName, price: carPrice };
     document.getElementById('bCarId').value = carId;
-    document.getElementById('bookModalTitle').textContent = `ðŸ“… Book ${carName}`;
+    document.getElementById('bookModalTitle').textContent = `\u{1F4C5} Book ${carName}`;
     document.getElementById('startDate').value = '';
     document.getElementById('endDate').value   = '';
     document.getElementById('bookingSummary').style.display = 'none';
@@ -223,8 +223,8 @@ const DashApp = {
       <img src="${carImage}" alt="${carName}" style="width:80px;height:55px;object-fit:cover;border-radius:10px;background:var(--bg-2)"
            onerror="this.src='/car_rental/assets/images/cars/placeholder.svg'">
       <div>
-        <div style="font-weight:700;color:var(--text-heading)">${carName}</div>
-        <div style="color:var(--primary);font-weight:800;font-size:1.1rem">â‚¹${Number(carPrice).toLocaleString('en-IN')}<span style="font-size:0.8rem;font-weight:500;color:var(--text-muted)">/day</span></div>
+        <div style="font-weight:700;color:#1e293b">${carName}</div>
+        <div style="color:var(--primary);font-weight:800;font-size:1.1rem">\u{20B9}${Number(carPrice).toLocaleString('en-IN')}<span style="font-size:0.8rem;font-weight:500;color:#64748b">/day</span></div>
       </div>`;
 
     this.setMinDates();
@@ -233,4 +233,3 @@ const DashApp = {
 };
 
 document.addEventListener('DOMContentLoaded', () => DashApp.init());
-

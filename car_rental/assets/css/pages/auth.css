@@ -127,7 +127,7 @@
 .auth-form-header h1 {
   font-size: 1.9rem;
   font-weight: 800;
-  color: var(--text-heading);
+  color: #1e293b;
   margin-bottom: 8px;
 }
 .auth-form-header p {
@@ -164,7 +164,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.875rem;
-  color: var(--text-body);
+  color: #4b5563;
   cursor: pointer;
 }
 .checkbox-label input[type=checkbox] {
@@ -216,7 +216,7 @@
   background: var(--bg-2);
   transform: translateY(-2px);
 }
-.demo-cred span { font-size: 0.9rem; font-weight: 700; color: var(--text-heading); }
+.demo-cred span { font-size: 0.9rem; font-weight: 700; color: #1e293b; }
 .demo-cred small { font-size: 0.72rem; color: var(--text-muted); }
 
 /* ---- Back Link ---- */

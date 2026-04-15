@@ -46,70 +46,59 @@ if (isLoggedIn()) {
 
 <!-- ===================== HERO ===================== -->
 <section class="hero" id="home">
-  <div class="hero-bg-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
+  <!-- Video Background -->
+  <div class="hero-video-wrap">
+    <video autoplay muted loop playsinline id="heroVideo" class="hero-video">
+      <source src="/car_rental/assets/images/cars/carvideo.mp4" type="video/mp4">
+    </video>
+    <div class="hero-video-overlay"></div>
   </div>
+
+  <!-- Ambient particles -->
+  <div class="hero-particles" id="heroParticles"></div>
+
   <div class="container">
     <div class="hero-content">
       <div class="hero-text">
-        <div class="hero-badge animate-fadeInUp">🏆 India's #1 Car Rental Platform</div>
+        <div class="hero-badge animate-fadeInUp">
+          <span class="badge-dot"></span>
+          INDIA'S #1 CAR RENTAL PLATFORM
+        </div>
         <h1 class="hero-title animate-fadeInUp delay-1">
-          Rent Your <span class="text-gradient">Perfect Car</span><br>For Any Journey
+          Drive the<br><span class="text-gold">Extraordinary</span>
         </h1>
         <p class="hero-subtitle animate-fadeInUp delay-2">
-          Choose from our premium fleet of 100+ cars. Transparent pricing, instant booking, and 24/7 support. Your dream ride is just a click away.
+          Experience world-class cars at unbeatable prices. Book in minutes, drive with confidence.
         </p>
         <div class="hero-actions animate-fadeInUp delay-3">
-          <a href="/car_rental/pages/signup.php" class="btn btn-primary btn-lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            Book Now — It's Free
+          <a href="#cars" class="btn btn-gold btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            EXPLORE FLEET
           </a>
-          <a href="#cars" class="btn btn-outline btn-lg">View Fleet</a>
+          <a href="/car_rental/pages/signup.php" class="btn btn-outline-light btn-lg">BOOK NOW</a>
         </div>
         <div class="hero-stats animate-fadeInUp delay-4">
           <div class="stat-item">
             <span class="stat-number">500+</span>
-            <span class="stat-label">Happy Customers</span>
+            <span class="stat-label">HAPPY CUSTOMERS</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-number">6+</span>
-            <span class="stat-label">Car Models</span>
+            <span class="stat-label">CAR MODELS</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
             <span class="stat-number">24/7</span>
-            <span class="stat-label">Support</span>
-          </div>
-        </div>
-      </div>
-      <div class="hero-visual animate-fadeInUp delay-2">
-        <div class="car-showcase">
-          <img src="/car_rental/assets/images/cars/car_luxury.png" alt="Luxury Car" class="hero-car animate-float" id="heroCar">
-          <div class="car-glow"></div>
-        </div>
-        <div class="floating-card card-fuel">
-          <span class="fc-icon">⛽</span>
-          <div>
-            <div class="fc-title">Fuel Included</div>
-            <div class="fc-sub">First 100km free</div>
-          </div>
-        </div>
-        <div class="floating-card card-price">
-          <span class="fc-icon">💰</span>
-          <div>
-            <div class="fc-title">From Rs. 900/day</div>
-            <div class="fc-sub">No hidden charges</div>
+            <span class="stat-label">SUPPORT</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="hero-wave">
-    <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#F4F3FF"/></svg>
-  </div>
+
+  <!-- Bottom gradient fade -->
+  <div class="hero-bottom-fade"></div>
 </section>
 
 <!-- ===================== FEATURES ===================== -->
@@ -171,7 +160,7 @@ if (isLoggedIn()) {
 </section>
 
 <!-- ===================== PRICING ===================== -->
-<section class="pricing-section section" id="pricing" style="background:linear-gradient(135deg,#F4F3FF,#EDE9FE);">
+<section class="pricing-section section" id="pricing">
   <div class="container">
     <div class="section-header">
       <div class="section-badge">Transparent Pricing</div>
@@ -248,7 +237,7 @@ if (isLoggedIn()) {
 </section>
 
 <!-- ===================== CONTACT ===================== -->
-<section class="contact-section section" id="contact" style="background:linear-gradient(135deg,#F4F3FF,#EDE9FE);">
+<section class="contact-section section" id="contact">
   <div class="container">
     <div class="section-header">
       <div class="section-badge">Get In Touch</div>

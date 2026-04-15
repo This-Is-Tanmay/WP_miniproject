@@ -1,5 +1,5 @@
 /**
- * main.js â€” Global JavaScript Utilities
+ * main.js - Global JavaScript Utilities
  * - AJAX helper
  * - Toast notifications
  * - Navbar scroll effect
@@ -86,10 +86,10 @@ const Toast = {
 
   show(message, type = 'info', duration = 4000) {
     if (!this.container) this.init();
-    const icons = { success: 'âœ…', error: 'âŒ', info: 'â„¹ï¸', warning: 'âš ï¸' };
+    const icons = { success: String.fromCodePoint(0x2705), error: String.fromCodePoint(0x274C), info: String.fromCodePoint(0x2139, 0xFE0F), warning: String.fromCodePoint(0x26A0, 0xFE0F) };
     const toast = document.createElement('div');
     toast.className = `toast toast-${type === 'error' ? 'error' : type === 'success' ? 'success' : 'info'}`;
-    toast.innerHTML = `<span>${icons[type] || 'â„¹ï¸'}</span><span>${message}</span>`;
+    toast.innerHTML = `<span>${icons[type] || icons.info}</span><span>${message}</span>`;
     this.container.appendChild(toast);
     setTimeout(() => {
       toast.classList.add('hide');
@@ -109,8 +109,10 @@ const AlertBox = {
   show(containerId, message, type = 'danger') {
     const el = document.getElementById(containerId);
     if (!el) return;
+    const iconMap = { success: String.fromCodePoint(0x2705), danger: String.fromCodePoint(0x274C), info: String.fromCodePoint(0x2139, 0xFE0F) };
+    const icon = iconMap[type] || iconMap.info;
     el.innerHTML = `<div class="alert alert-${type}">
-      <span>${type === 'success' ? 'âœ…' : type === 'danger' ? 'âŒ' : 'â„¹ï¸'}</span>
+      <span>${icon}</span>
       <span>${message}</span>
     </div>`;
     el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -126,6 +128,12 @@ const AlertBox = {
    ============================================= */
 function buildCarCard(car, showBookBtn = false) {
   const available = car.available == 1;
+  const seatIcon = String.fromCodePoint(0x1F465);
+  const fuelIcon = String.fromCodePoint(0x26FD);
+  const gearIcon = String.fromCodePoint(0x2699, 0xFE0F);
+  const checkIcon = String.fromCodePoint(0x2705);
+  const crossIcon = String.fromCodePoint(0x274C);
+
   return `
     <div class="car-card" data-car-id="${car.id}" data-car-price="${car.price_per_day}">
       <div class="car-card-image">
@@ -134,16 +142,16 @@ function buildCarCard(car, showBookBtn = false) {
              onerror="this.src='/car_rental/assets/images/cars/placeholder.svg'">
         <span class="car-type-badge">${car.type}</span>
         <span class="car-avail-badge badge ${available ? 'badge-success' : 'badge-danger'}">
-          ${available ? 'âœ… Available' : 'âŒ Booked'}
+          ${available ? checkIcon + ' Available' : crossIcon + ' Booked'}
         </span>
       </div>
       <div class="car-card-body">
         <div class="car-brand">${car.brand}</div>
         <div class="car-name">${car.name}</div>
         <div class="car-specs">
-          <span class="car-spec">ðŸ‘¥ ${car.seats} Seats</span>
-          <span class="car-spec">â›½ ${car.fuel_type}</span>
-          <span class="car-spec">âš™ï¸ ${car.transmission}</span>
+          <span class="car-spec">${seatIcon} ${car.seats} Seats</span>
+          <span class="car-spec">${fuelIcon} ${car.fuel_type}</span>
+          <span class="car-spec">${gearIcon} ${car.transmission}</span>
         </div>
         ${car.description ? `<p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">${car.description}</p>` : ''}
         <div class="car-card-footer">
@@ -169,7 +177,7 @@ function buildCarCard(car, showBookBtn = false) {
 }
 
 /* =============================================
-   NAVBAR â€” Scroll + Mobile
+   NAVBAR - Scroll + Mobile
    ============================================= */
 document.addEventListener('DOMContentLoaded', () => {
   Toast.init();
@@ -243,4 +251,3 @@ window.Ajax    = Ajax;
 window.Toast   = Toast;
 window.AlertBox = AlertBox;
 window.buildCarCard = buildCarCard;
-

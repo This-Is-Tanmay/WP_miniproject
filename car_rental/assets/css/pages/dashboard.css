@@ -52,7 +52,7 @@
   gap: 12px;
   padding: 12px 16px;
   border-radius: var(--radius-md);
-  color: var(--text-body);
+  color: #475569;
   font-size: 0.9rem;
   font-weight: 500;
   text-decoration: none;
@@ -133,10 +133,11 @@
 .dash-welcome h2 {
   font-size: 1.1rem;
   margin-bottom: 2px;
+  color: #1e293b;
 }
 .dash-welcome p {
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: #64748b;
   margin: 0;
 }
 .dash-logout { margin-left: auto; }
@@ -161,10 +162,11 @@
 .section-head h3 {
   font-size: 1.2rem;
   margin-bottom: 4px;
+  color: #1e293b;
 }
 .section-head p {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: #64748b;
   margin: 0;
 }
 
@@ -208,7 +210,7 @@
 .bookings-table-wrap td {
   padding: 16px 20px;
   font-size: 0.875rem;
-  color: var(--text-body);
+  color: #374151;
   border-bottom: 1px solid var(--border);
   vertical-align: middle;
 }
@@ -234,7 +236,7 @@
   color: var(--text-muted);
 }
 .empty-state .empty-icon { font-size: 3rem; margin-bottom: 12px; }
-.empty-state h4 { color: var(--text-heading); margin-bottom: 8px; }
+.empty-state h4 { color: #1e293b; margin-bottom: 8px; }
 .empty-state p  { font-size: 0.875rem; }
 
 /* ====== BOOKING MODAL ENHANCEMENTS ====== */
@@ -330,7 +332,7 @@
 .table-wrap td {
   padding: 14px 16px;
   font-size: 0.875rem;
-  color: var(--text-body);
+  color: #374151;
   border-bottom: 1px solid var(--border);
   vertical-align: middle;
 }
